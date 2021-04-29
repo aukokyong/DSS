@@ -27,7 +27,8 @@ public class RatingRepositoryImpl implements RatingRepository {
 			}
 		} catch (SQLException exception) {
 			System.out.println(exception);
-		}		return ratings;
+		}
+		return ratings;
 	}
 
 	@Override
