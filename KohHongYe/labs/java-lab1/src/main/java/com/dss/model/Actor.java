@@ -3,33 +3,67 @@ package com.dss.model;
 import java.io.Serializable;
 
 public class Actor extends Object implements Serializable{
-	private int actor_id;
-	private String first_name;
-	private String last_name;
+	private int actorId;
+	private String firstName;
+	private String lastName;
+	private char gender;
+	private int age;
 	
-	public Actor(int actor_id,String first_name, String last_name) {
-		this.actor_id = actor_id;
-		this.first_name = first_name;
-		this.last_name = last_name;
+	public Actor(int actorId,String firstName, String lastName,char gender, int age) {
+		this.actorId = actorId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.gender = gender;
+		this.age = age;
+	}
+	
+	public Actor() {
+		
 	}
 	
 	public int getActor_id() {
-		return actor_id;
+		return actorId;
 	}
 	public void setActor_id(int actor_id) {
-		this.actor_id = actor_id;
+		this.actorId = actor_id;
 	}
 	public String getFirst_name() {
-		return first_name;
+		return firstName;
 	}
 	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+		this.firstName = first_name;
 	}
 	public String getLast_name() {
-		return last_name;
+		return lastName;
 	}
 	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+		this.lastName = last_name;
+	}
+
+	public char getGender() {
+		return gender;
+	}
+
+	public void setGender(char gender) {
+		this.gender = gender;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
 	}
 	
+	@Override
+	public String toString() {
+		String actorString;
+		actorString = "\nActor Id : " + getActor_id();
+		actorString += "\tFirst Name : " + getFirst_name();
+		actorString += "\tLast Name : " + getLast_name();
+		actorString += "\tGender : " + getGender();
+		actorString += "\tAge : " + getAge() + "\n";
+		return actorString;
+	}
 }
