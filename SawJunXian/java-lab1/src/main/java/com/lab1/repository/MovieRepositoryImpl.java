@@ -34,24 +34,26 @@ public class MovieRepositoryImpl implements MovieRepository{
 
 	}
 	
-	public void getMoviesFromDBviaID(int movieid)
+	public Movie getMovieviaID(int movieid)
 	{
+		Movie movie = new Movie();
 		try {
 		Connection connection = MySQLConnectionUtil.getConnection();
 		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM MOVIE WHERE MOVIE_ID = ?");
 		stmt.setInt(1, movieid);
-		System.out.println("ID \t Title \t Cost \t Year");
 		ResultSet resultSet = stmt.executeQuery();
+	
 			while(resultSet.next())
 			{
-				System.out.print(resultSet.getInt(1) + "\t");
-				System.out.print(resultSet.getString(2) + "\t");
-				System.out.print("$" + resultSet.getString(3) + "\t");
-				System.out.println(resultSet.getString(4));
+				movie.setMovie_id(resultSet.getInt(1));
+				movie.setMovie_title(resultSet.getString(2));
+				movie.setMovie_cost(resultSet.getInt(3));
+				movie.setMovie_year(resultSet.getInt(4));
 			}
 		} catch (SQLException exception) {
 			System.out.println(exception);
 		}
+		return movie;
 	}
 	
 	public int insertMovie(Movie movie) {

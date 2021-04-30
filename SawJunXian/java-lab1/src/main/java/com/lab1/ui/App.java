@@ -25,7 +25,11 @@ public class App {
 	private static void getMoviesviaID()
 	{
 		MovieService movieservice = new MovieServiceImpl();
-		movieservice.getMoviesviaID(2);
+		Movie m = movieservice.getMovieviaID(1);
+		System.out.print(m.getMovie_id() + "\t");
+		System.out.print(m.getMovie_title() + "\t");
+		System.out.print("$" + m.getMovie_cost() + "\t");
+		System.out.print(m.getMovie_year() + "\t\n");
 	}
 	
 	private static void insertMovies()
@@ -49,8 +53,8 @@ public class App {
 //		insertMovies();
 //		updateMovie();
 //		deleteMovie();
-		getMovies();
-//		getMoviesviaID();
+//		getMovies();
+		getMoviesviaID();
 	}
 
 }

@@ -9,5 +9,5 @@ public interface MovieService {
 	public int insertMovie(Movie Movie);
 	public int updateMovie(Movie movie);
 	public int deleteMovie(int movieid);
-	public void getMoviesviaID(int movieid);
+	public Movie getMovieviaID(int movieid);
 }
