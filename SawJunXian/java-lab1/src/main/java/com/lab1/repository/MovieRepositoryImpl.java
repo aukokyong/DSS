@@ -13,22 +13,24 @@ import com.lab1.repository.MovieRepository;
 
 public class MovieRepositoryImpl implements MovieRepository{
 
-	public void getMoviesFromDB() {
-
+	public ArrayList <Movie> getMovies() {
+		ArrayList movies = new ArrayList();
 		try {
 		Connection connection = MySQLConnectionUtil.getConnection();
 		Statement statement = connection.createStatement();
 		ResultSet resultSet = statement.executeQuery("SELECT * FROM MOVIE");
-		System.out.println("ID \t Title \t Cost \t Year");
 			while (resultSet.next()) {
-				System.out.print(resultSet.getInt(1) + "\t");
-				System.out.print(resultSet.getString(2) + "\t");
-				System.out.print("$" + resultSet.getString(3) + "\t");
-				System.out.println(resultSet.getString(4));
+				Movie movie = new Movie();
+				movie.setMovie_id(resultSet.getInt(1));
+				movie.setMovie_title(resultSet.getString(2));
+				movie.setMovie_cost(resultSet.getInt(3));
+				movie.setMovie_year(resultSet.getInt(4));
+				movies.add(movie);
 			}
 		} catch (SQLException exception) {
 			System.out.println(exception);
 		}
+		return movies;
 
 	}
 	

@@ -1,5 +1,7 @@
 package com.lab1.ui;
 
+import java.util.ArrayList;
+
 import com.lab1.model.Movie;
 import com.lab1.service.MovieService;
 import com.lab1.service.MovieServiceImpl;
@@ -9,7 +11,15 @@ public class App {
 	private static void getMovies()
 	{
 		MovieService movieservice = new MovieServiceImpl();
-		movieservice.getMovies();
+		ArrayList<Movie> movies = new ArrayList();
+		movies = movieservice.getMovies();
+		for(Movie m :movies)
+		{
+			System.out.print(m.getMovie_id() + "\t");
+			System.out.print(m.getMovie_title() + "\t");
+			System.out.print("$" + m.getMovie_cost() + "\t");
+			System.out.print(m.getMovie_year() + "\t\n");
+		}
 	}
 	
 	private static void getMoviesviaID()
@@ -39,8 +49,8 @@ public class App {
 //		insertMovies();
 //		updateMovie();
 //		deleteMovie();
-//		getMovies();
-		getMoviesviaID();
+		getMovies();
+//		getMoviesviaID();
 	}
 
 }
