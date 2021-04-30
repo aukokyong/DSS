@@ -19,9 +19,9 @@ public class MovieServiceImpl implements MovieService {
 		return movierepo.getMovies();
 	}
 	
-	public void getMoviesviaID(int movieid)
+	public Movie getMovieviaID(int movieid)
 	{
-		movierepo.getMoviesFromDBviaID(movieid);
+		return movierepo.getMovieviaID(movieid);
 	}
 	
 	public int insertMovie(Movie movie)
