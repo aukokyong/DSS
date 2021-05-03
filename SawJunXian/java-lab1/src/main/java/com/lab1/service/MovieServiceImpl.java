@@ -1,5 +1,7 @@
 package com.lab1.service;
 
+import java.util.ArrayList;
+
 import com.lab1.model.Movie;
 import com.lab1.repository.MovieRepository;
 import com.lab1.repository.MovieRepositoryImpl;
@@ -12,14 +14,14 @@ public class MovieServiceImpl implements MovieService {
 		movierepo = new MovieRepositoryImpl();
 	}
 	
-	public void getMovies()
+	public ArrayList <Movie> getMovies()
 	{
-		movierepo.getMoviesFromDB();
+		return movierepo.getMovies();
 	}
 	
-	public void getMoviesviaID(int movieid)
+	public Movie getMovieviaID(int movieid)
 	{
-		movierepo.getMoviesFromDBviaID(movieid);
+		return movierepo.getMovieviaID(movieid);
 	}
 	
 	public int insertMovie(Movie movie)
