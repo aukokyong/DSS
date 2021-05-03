@@ -11,7 +11,7 @@ import java.util.List;
 import com.dss.repository.util.MySQLConnectionUtil;
 import com.dss.model.Actor;
 
-public class ActorsRepositoryImpl implements ActorsRepository {
+public class ActorRepositoryImpl implements ActorRepository {
 
 	@Override
 	public List getActors() {
@@ -140,6 +140,34 @@ public class ActorsRepositoryImpl implements ActorsRepository {
 			System.out.println(exception);
 		}
 		return actor;
+	}
+	
+	public Actor getActorByFullName(String firstName, String lastName) {
+		Actor actor = new Actor();
+		try {
+			Connection connection = MySQLConnectionUtil.getConnection();
+			String selString = "SELECT * FROM ACTORS WHERE FIRST_NAME = ? AND LAST_NAME = ?";
+			// statement for executing a query
+			PreparedStatement statement = connection.prepareStatement(selString);
+			statement.setString(1, firstName);
+			statement.setString(2, lastName);
+			// get the results
+			ResultSet resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				actor.setActorId(resultSet.getInt(1));
+				actor.setFirstName(resultSet.getString(2));
+				actor.setLastName(resultSet.getString(3));
+				actor.setGender(resultSet.getString(4).charAt(0));
+				actor.setAge(resultSet.getInt(5));
+			}
+			
+			
+		} catch (SQLException exception) {
+			System.out.println(exception);
+		}
+		return actor;
+			
+		
 	}
 
 }
