@@ -62,10 +62,7 @@ public class ActorsRepositoryImpl implements ActorsRepository {
 		} catch (SQLException exception) {
 			System.out.println(exception);
 		}
-		if(success==0)
-			return 0;
-		else
-			return 1;
+		return success;
 	}
 
 	@Override
@@ -93,10 +90,7 @@ public class ActorsRepositoryImpl implements ActorsRepository {
 		} catch (SQLException exception) {
 			System.out.println(exception);
 		}
-		if(success==0)
-			return 0;
-		else
-			return 1;
+		return success;
 	}
 
 	@Override
@@ -119,10 +113,7 @@ public class ActorsRepositoryImpl implements ActorsRepository {
 		} catch (SQLException exception) {
 			System.out.println(exception);
 		}
-		if(success==0)
-			return 0;
-		else
-			return 1;
+		return success;
 	}
 
 	@Override
