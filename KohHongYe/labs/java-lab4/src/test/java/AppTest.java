@@ -68,8 +68,8 @@ public class AppTest {
 		String lastName = "Koh";
 		int age = 66;
 		char gender = 'M';
-		assertEquals(null,actorRepo.getActorByFullName(firstName, lastName));
-		int actorId = actorRepo.getActors().size();
+		assertEquals(null,actorRepo.getActorByFullName(firstName, lastName).getFirstName());
+		int actorId = actorRepo.getActors().size()+1;
 		Actor actor = new Actor(actorId,firstName,lastName,gender,age);
 		assertEquals(1,actorRepo.insertActor(actor));
 		actorRepo.deleteActor(actor);
@@ -79,7 +79,7 @@ public class AppTest {
 	public void testRemoveActor() {
 		Actor actor = new Actor(7,"Hong","Koh",'M',30);
 		actorRepo.insertActor(actor);
-		assertNotNull(actorRepo.getActorByFullName(actor.getFirstName(), actor.getLastName()));		
+		assertNotNull(actorRepo.getActorByFullName(actor.getFirstName(), actor.getLastName()).getFirstName());		
 		assertEquals(1,actorRepo.deleteActor(actor));
 		
 	}
