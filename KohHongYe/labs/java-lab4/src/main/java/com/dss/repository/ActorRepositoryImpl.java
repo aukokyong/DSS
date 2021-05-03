@@ -1,4 +1,4 @@
-package com.dss.repository.actors;
+package com.dss.repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -142,30 +142,31 @@ public class ActorRepositoryImpl implements ActorRepository {
 		return actor;
 	}
 	
-	public Actor getActorByFullName(String firstName, String lastName) {
-		Actor actor = new Actor();
+	public List getActorByFirstName(String firstName) {
+		List actors = new ArrayList();
 		try {
 			Connection connection = MySQLConnectionUtil.getConnection();
-			String selString = "SELECT * FROM ACTORS WHERE FIRST_NAME = ? AND LAST_NAME = ?";
+			String selString = "SELECT * FROM ACTORS WHERE FIRST_NAME = ?";
 			// statement for executing a query
 			PreparedStatement statement = connection.prepareStatement(selString);
 			statement.setString(1, firstName);
-			statement.setString(2, lastName);
 			// get the results
 			ResultSet resultSet = statement.executeQuery();
 			while (resultSet.next()) {
+				Actor actor = new Actor();
 				actor.setActorId(resultSet.getInt(1));
 				actor.setFirstName(resultSet.getString(2));
 				actor.setLastName(resultSet.getString(3));
 				actor.setGender(resultSet.getString(4).charAt(0));
 				actor.setAge(resultSet.getInt(5));
+				actors.add(actor);
 			}
 			
 			
 		} catch (SQLException exception) {
 			System.out.println(exception);
 		}
-		return actor;
+		return actors;
 			
 		
 	}

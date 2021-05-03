@@ -3,8 +3,8 @@ package com.dss.ui;
 import java.util.List;
 
 import com.dss.model.Actor;
-import com.dss.service.ActorsService;
-import com.dss.service.ActorsServiceImpl;
+import com.dss.service.ActorService;
+import com.dss.service.ActorServiceImpl;
 
 public class CRUDApp {
 	public static void main(String [] args) {
@@ -34,10 +34,10 @@ public class CRUDApp {
 
 	private static Actor getActorFromDB(int actorId) {
 		// creating the Actors service reference
-		ActorsService actorsService = null;
+		ActorService actorService = null;
 		// instantiate the Actors service
-		actorsService = new ActorsServiceImpl();
-		Actor actor = actorsService.getActor(actorId);
+		actorService = new ActorServiceImpl();
+		Actor actor = actorService.getActor(actorId);
 
 		System.out.println(actor);
 		return actor;
@@ -45,10 +45,10 @@ public class CRUDApp {
 
 	private static List getActorsFromDB() {
 		// creating the Actors service reference
-		ActorsService actorsService = null;
+		ActorService actorService = null;
 		// instantiate the Actors service
-		actorsService = new ActorsServiceImpl();
-		List actors = actorsService.getActors();
+		actorService = new ActorServiceImpl();
+		List actors = actorService.getActors();
 
 		System.out.println(actors);
 		return actors;
@@ -56,12 +56,12 @@ public class CRUDApp {
 
 	private static void insertActorIntoDB(int actorId, String firstName, String lastName, char gender, int age) {
 		// creating the Actors service reference
-		ActorsService actorsService = null;
+		ActorService actorService = null;
 		// instantiate the Actors service
-		actorsService = new ActorsServiceImpl();
+		actorService = new ActorServiceImpl();
 
 		int success = 0;
-		success = actorsService.insertActor(new Actor(actorId,firstName,lastName,gender,age));
+		success = actorService.insertActor(new Actor(actorId,firstName,lastName,gender,age));
 
 		if(success==0)
 			System.out.println("Insert Failed");
@@ -72,12 +72,12 @@ public class CRUDApp {
 	private static void deleteActorFromDB(Actor actor) {
 		try {
 			// creating the Actors service reference
-			ActorsService actorsService = null;
+			ActorService actorService = null;
 			// instantiate the Actors service
-			actorsService = new ActorsServiceImpl();
+			actorService = new ActorServiceImpl();
 
 			int success = 0;
-			success = actorsService.delActor(actor);
+			success = actorService.delActor(actor);
 
 			if(success==0)
 				System.out.println("Delete Failed");
@@ -91,12 +91,12 @@ public class CRUDApp {
 	private static void updateActorToDB(Actor actor) {
 		try {
 			// creating the Actors service reference
-			ActorsService actorsService = null;
+			ActorService actorService = null;
 			// instantiate the Actors service
-			actorsService = new ActorsServiceImpl();
+			actorService = new ActorServiceImpl();
 
 			int success = 0;
-			success = actorsService.updateActor(actor);
+			success = actorService.updateActor(actor);
 
 			if(success==0)
 				System.out.println("Update Failed");

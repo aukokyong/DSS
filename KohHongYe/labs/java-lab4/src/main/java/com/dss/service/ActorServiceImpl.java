@@ -3,13 +3,13 @@ package com.dss.service;
 import java.util.List;
 
 import com.dss.model.Actor;
-import com.dss.repository.actors.ActorRepository;
-import com.dss.repository.actors.ActorRepositoryImpl;
+import com.dss.repository.ActorRepository;
+import com.dss.repository.ActorRepositoryImpl;
 
-public class ActorsServiceImpl implements ActorsService {
+public class ActorServiceImpl implements ActorService {
 	
 	ActorRepository actorsRepo = null;
-	public ActorsServiceImpl() {
+	public ActorServiceImpl() {
 		System.out.println("ActorsService instantiated ....");
 		actorsRepo = new ActorRepositoryImpl();
 	}

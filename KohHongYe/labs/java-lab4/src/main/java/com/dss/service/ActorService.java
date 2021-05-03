@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.dss.model.Actor;
 
-public interface ActorsService {
+public interface ActorService {
 
 	public abstract List getActors();
 	public abstract Actor getActor(int actorId);
