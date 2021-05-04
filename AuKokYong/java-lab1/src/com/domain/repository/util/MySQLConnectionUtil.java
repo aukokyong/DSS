@@ -5,10 +5,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class MySQLConnectionUtil {
-    
-    public static void main(String[] args){
-        getConnection();
-    }
+
+    // for testing connection only
+    // public static void main(String[] args){
+    //     getConnection();
+    // }
     
     public static Connection getConnection(){
         try{
