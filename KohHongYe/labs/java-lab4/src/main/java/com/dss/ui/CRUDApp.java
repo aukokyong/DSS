@@ -29,6 +29,10 @@ public class CRUDApp {
 		deleteActorFromDB(actor);
 		//Failed Delete
 		deleteActorFromDB(null);
+		String s1 = "yes";
+		String s2 = "yes ";
+		String s3 = new String(s1);
+		System.out.println("TESTING" + s1 == s3);
 
 	}
 
