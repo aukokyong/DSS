@@ -66,7 +66,6 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         
         List<Customer> customer = new ArrayList<Customer>();
         String sql = "SELECT * FROM CUSTOMER";
-        
         try{
             Connection connection = MySQLConnectionUtil.getConnection();
             Statement statement = connection.createStatement();
@@ -87,12 +86,25 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     }
     
     @Override
-    public void updateCustomerByIDFromRepository(){
+    public void updateCustomerByIDFromRepository(int ID, Customer customer){
         System.out.println("UPDATING CUSTOMER INFO...");
+        
     }
     
     @Override
     public void deleteCustomerByIDFromRepository(int ID){
         System.out.println("DELETING CUSTOMER ID FROM DATABASE...");
+        
+        int noOfRowsDeleted = 0;
+        String sql = "DELETE FROM customer WHERE ID = ?";
+        try{
+            Connection connection = MySQLConnectionUtil.getConnection();
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, ID);
+            System.out.println(statement.executeUpdate() + " customer data deleted");
+            connection.close();
+        } catch(SQLException err){
+            System.out.println(err.getMessage());
+        }
     }
 }

@@ -12,7 +12,7 @@ public interface CustomerService {
     
     public List<Customer> getAllCustomer();
     
-    public void updateCustomerByID(int ID);
+    public void updateCustomerByID(int ID, Customer customer);
     
     public void deleteCustomerByID(int ID);
 }

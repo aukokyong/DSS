@@ -15,11 +15,11 @@ public class App {
         
         // createCustomer(customer);
         // getCustomerById(1);
-        getAllCustomer();
+        // getAllCustomer();
         
-        // customerService.updateCustomer();
+        updateCustomer(1, customer);
         
-        // customerService.deleteCustomerByID();
+        // deleteCustomerByID(2);
     }
     
     public static void createCustomer(Customer customer){
@@ -40,5 +40,15 @@ public class App {
         CustomerService customerService = new CustomerServiceImpl();
         List<Customer> queryResults = customerService.getAllCustomer();
         queryResults.forEach( customer -> System.out.println(customer.toString()) );
+    }
+    
+    public static void updateCustomer(int ID, Customer customer){
+        CustomerService customerService = new CustomerServiceImpl();
+        customerService.updateCustomerByID( ID, customer );
+    }
+    
+    public static void deleteCustomerByID(int ID){
+        CustomerService customerService = new CustomerServiceImpl();
+        customerService.deleteCustomerByID(ID);
     }
 }

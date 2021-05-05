@@ -36,9 +36,9 @@ public class CustomerServiceImpl implements CustomerService {
     }
     
     @Override
-    public void updateCustomerByID(int ID){
+    public void updateCustomerByID(int ID, Customer customer){
         System.out.println("=== UPDATING CUSTOMER INFO ===");
-        customerRepository.updateCustomerByIDFromRepository();
+        customerRepository.updateCustomerByIDFromRepository(ID, customer);
         System.out.println("--- UPDATED CUSTOMER INFO ---");
     }
     
