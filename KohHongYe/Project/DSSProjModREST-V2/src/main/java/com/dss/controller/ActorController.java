@@ -42,11 +42,13 @@ public class ActorController {
         List<Actor> actors = findActorsByFirstName(actor.getFirstName());
         boolean existingActor = false;
         long actorId = 0;
-        if(actors.size() != 0){
-            for(int i=0; i<actors.size();i++){
-                if(actor.getLastName().equals(actors.get(i).getLastName())){
-                    existingActor = true;
-                    actorId = actors.get(i).getActorId();
+        if(actors != null) {
+            if (actors.size() != 0) {
+                for (int i = 0; i < actors.size(); i++) {
+                    if (actor.getLastName().equals(actors.get(i).getLastName())) {
+                        existingActor = true;
+                        actorId = actors.get(i).getActorId();
+                    }
                 }
             }
         }
@@ -108,9 +110,18 @@ public class ActorController {
 
     @GetMapping("/actor/name/{first_name}")
     public List<Actor> findActorsByFirstName(@PathVariable(value="first_name")String firstName){
-        List<Actor> actors = actorRepository.findActorsByFirstName(firstName);
-        actors.forEach(Colors::pc);
-        return actors;
+        List<Actor> actors = null;
+
+        try {
+            Optional<List<Actor>> optionalActor = actorRepository.findActorsByFirstName(firstName);
+            actors = optionalActor.get();
+            actors.forEach(Colors::pc);
+            return actors;
+        }catch(NoSuchElementException exception){
+            System.out.println("Actor does not exist");
+            return null;
+        }
+
     }
 
 

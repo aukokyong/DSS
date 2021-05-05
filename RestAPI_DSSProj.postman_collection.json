@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "3e7a4253-f7ce-4718-881c-7bbb9cd9e8b3",
+		"_postman_id": "1bf5c21a-8091-4567-bed8-6159d75bdc6d",
 		"name": "RestAPI_DSSProj",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -23,12 +23,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5555/dss/api/actor/7",
+							"raw": "http://localhost:8080/dss/api/actor/7",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5555",
+							"port": "8080",
 							"path": [
 								"dss",
 								"api",
@@ -54,12 +54,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5555/dss/api/actor",
+							"raw": "http://localhost:8080/dss/api/actor",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5555",
+							"port": "8080",
 							"path": [
 								"dss",
 								"api",
@@ -84,12 +84,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5555/dss/api/actor/8",
+							"raw": "http://localhost:8080/dss/api/actor/8",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5555",
+							"port": "8080",
 							"path": [
 								"dss",
 								"api",
@@ -106,12 +106,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5555/dss/api/actors",
+							"raw": "http://localhost:8080/dss/api/actors",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5555",
+							"port": "8080",
 							"path": [
 								"dss",
 								"api",
@@ -127,12 +127,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5555/dss/api/actor/1",
+							"raw": "http://localhost:8080/dss/api/actor/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5555",
+							"port": "8080",
 							"path": [
 								"dss",
 								"api",
@@ -149,17 +149,18 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5555/dss/api/actor/1",
+							"raw": "http://localhost:8080/dss/api/actor/name/chris",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "5555",
+							"port": "8080",
 							"path": [
 								"dss",
 								"api",
 								"actor",
-								"1"
+								"name",
+								"chris"
 							]
 						}
 					},
@@ -292,6 +293,265 @@
 								"api",
 								"reviews",
 								"10"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movie",
+			"item": [
+				{
+					"name": "POST MOVIE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"movieTitle\": \"Superman2\",\n        \"movieCost\": 11,\n        \"movieYear\": 2021\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/dss/api/movies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"dss",
+								"api",
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET MOVIES",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/dss/api/movies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"dss",
+								"api",
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET MOVIE BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/dss/api/movies/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"dss",
+								"api",
+								"movies",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET MOVIE BY YEAR",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5555/dss/api/movies/year/2021",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"dss",
+								"api",
+								"movies",
+								"year",
+								"2021"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE MOVIE",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"movieTitle\": \"Lord of the rings\",\n    \"movieCost\": 10,\n    \"movieYear\": 2011\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/dss/api/movies/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"dss",
+								"api",
+								"movies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE MOVIE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/dss/api/movies/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"dss",
+								"api",
+								"movies",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "postCustomer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerFirstName\": \"first_name\",\n    \"customerLastName\":  \"last_name\",\n    \"customerAge\": 0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/dss/api/customer",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"dss",
+								"api",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCustomer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/dss/api/customer/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"dss",
+								"api",
+								"customer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCustomer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/dss/api/customer",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"dss",
+								"api",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCustomer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerFirstName\": \"updated_first_name\",\n    \"customerLastName\" : \"updated_last_name\",\n    \"customerAge\" : 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/dss/api/customer/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"dss",
+								"api",
+								"customer",
+								"1"
 							]
 						}
 					},
