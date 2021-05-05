@@ -39,6 +39,20 @@ public class MovieController {
 		return movie;
 	}
 	
+	@GetMapping("/movies/title/{movie_title}")
+	public List<Movie> findMovieByTitle(@PathVariable(value="movie_title")String movieTitle){
+        List<Movie> movie = movieRepository.findMovieByMovieTitle(movieTitle);
+        movie.forEach(System.out::println);
+        return movie;
+	}
+	
+	@GetMapping("/movies/year/{movie_year}")
+	public List<Movie> findMovieByYear(@PathVariable(value="movie_year")int movieYear){
+        List<Movie> movie = movieRepository.findMovieByMovieYear(movieYear);
+        movie.forEach(System.out::println);
+        return movie;
+	}
+	
 	@PostMapping("/movies")
 	public Movie createMovie(@RequestBody Movie movie) {
 		System.out.println("Inserting " +movie);
@@ -51,9 +65,9 @@ public class MovieController {
 	public Movie updateMovie(@PathVariable(value ="id") Long movieid, @RequestBody Movie movie) {
 		Optional<Movie> optionalMovie = movieRepository.findById(movieid);
 		Movie movieFromDB = optionalMovie.get();
-		movieFromDB.setMovie_title(movie.getMovie_title());
-		movieFromDB.setMovie_cost(movie.getMovie_cost());
-		movieFromDB.setMovie_year(movie.getMovie_year());
+		movieFromDB.setMovieTitle(movie.getMovieTitle());
+		movieFromDB.setMovieCost(movie.getMovieCost());
+		movieFromDB.setMovieYear(movie.getMovieYear());
 		Movie movieReturned = movieRepository.save(movieFromDB);
 		System.out.println("Updated " +movie);
 		return movieReturned;

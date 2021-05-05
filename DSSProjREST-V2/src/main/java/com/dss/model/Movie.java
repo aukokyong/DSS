@@ -1,10 +1,12 @@
 package com.dss.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "Movies")
@@ -12,52 +14,66 @@ public class Movie {
 	
 	@Id
 	@GeneratedValue(strategy =  GenerationType.AUTO)
-	private Long movie_id;
-	private String movie_title;
-	private int movie_cost;
-	private int movie_year;
+	private Long movieId;
+	
+	@Column(name ="movie_title")
+	private String movieTitle;
+	@Column(name ="movie_cost")
+	private int movieCost;
+	@Column(name ="movie_year")
+	private int movieYear;
 	
 	public Movie()
 	{
 		
 	}
-	
-	public Movie(Long movie_id, String movie_title, int movie_cost, int movie_year) {
+
+	public Movie(Long movieId, String movieTitle, int movieCost, int movieYear) {
 		super();
-		this.movie_id = movie_id;
-		this.movie_title = movie_title;
-		this.movie_cost = movie_cost;
-		this.movie_year = movie_year;
+		this.movieId = movieId;
+		this.movieTitle = movieTitle;
+		this.movieCost = movieCost;
+		this.movieYear = movieYear;
 	}
 
-	public Long getMovie_id() {
-		return movie_id;
+	public Long getMovieId() {
+		return movieId;
 	}
-	public void setMovie_id(Long movie_id) {
-		this.movie_id = movie_id;
+
+	public void setMovieId(Long movieId) {
+		this.movieId = movieId;
 	}
-	public String getMovie_title() {
-		return movie_title;
+
+	public String getMovieTitle() {
+		return movieTitle;
 	}
-	public void setMovie_title(String movie_title) {
-		this.movie_title = movie_title;
+
+	public void setMovieTitle(String movieTitle) {
+		this.movieTitle = movieTitle;
 	}
-	public int getMovie_cost() {
-		return movie_cost;
+
+	public int getMovieCost() {
+		return movieCost;
 	}
-	public void setMovie_cost(int movie_cost) {
-		this.movie_cost = movie_cost;
+
+	public void setMovieCost(int movieCost) {
+		this.movieCost = movieCost;
 	}
-	public int getMovie_year() {
-		return movie_year;
+
+	public int getMovieYear() {
+		return movieYear;
 	}
-	public void setMovie_year(int movie_year) {
-		this.movie_year = movie_year;
+
+	public void setMovieYear(int movieYear) {
+		this.movieYear = movieYear;
 	}
+
 	@Override
 	public String toString() {
-		return "Movie [movie_id=" + movie_id + ", movie_title=" + movie_title + ", movie_cost=" + movie_cost
-				+ ", movie_year=" + movie_year + "]";
-	}			
+		return "Movie [movieId=" + movieId + ", movieTitle=" + movieTitle + ", movieCost=" + movieCost + ", movieYear="
+				+ movieYear + "]";
+	}
+	
+	
 	
 }
