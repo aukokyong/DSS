@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "3e7a4253-f7ce-4718-881c-7bbb9cd9e8b3",
+		"_postman_id": "1bf5c21a-8091-4567-bed8-6159d75bdc6d",
 		"name": "RestAPI_DSSProj",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -382,7 +382,19 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "http://localhost:5555/dss/api/movies/year/2021",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5555",
+							"path": [
+								"dss",
+								"api",
+								"movies",
+								"year",
+								"2021"
+							]
 						}
 					},
 					"response": []
