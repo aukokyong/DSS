@@ -1,0 +1,8 @@
+/Users/michaeljlee/Documents/workspace-sts/java-lab1/src/main/java/dss/rating/repository/RatingRepositoryImpl.java
+/Users/michaeljlee/Documents/workspace-sts/java-lab1/src/main/java/dss/rating/repository/util/MySQLConnectionUtil.java
+/Users/michaeljlee/Documents/workspace-sts/java-lab1/src/main/java/dss/rating/model/Rating.java
+/Users/michaeljlee/Documents/workspace-sts/java-lab1/src/main/java/dss/rating/repository/RatingRepository.java
+/Users/michaeljlee/Documents/workspace-sts/java-lab1/src/main/java/dss/rating/ui/CRUDApp.java
+/Users/michaeljlee/Documents/workspace-sts/java-lab1/src/test/java/dss/rating/test/RatingTest.java
+/Users/michaeljlee/Documents/workspace-sts/java-lab1/src/main/java/dss/rating/service/RatingServiceImpl.java
+/Users/michaeljlee/Documents/workspace-sts/java-lab1/src/main/java/dss/rating/service/RatingService.java
