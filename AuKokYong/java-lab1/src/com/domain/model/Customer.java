@@ -16,6 +16,13 @@ public class Customer {
         this.customerAge = customerAge;
     }
     
+    public Customer(int customerID, String customerFirstName, String customerLastName, int customerAge){
+        this.customerID = customerID;
+        this.customerFirstName = customerFirstName;
+        this.customerLastName = customerLastName;
+        this.customerAge = customerAge;
+    }
+    
     public int getCustomerID(){
         return customerID;
     }

@@ -4,6 +4,8 @@ import com.domain.model.Customer;
 import com.domain.repository.customer.CustomerRepository;
 import com.domain.repository.customer.CustomerRepositoryImpl;
 
+import java.util.List;
+
 public class CustomerServiceImpl implements CustomerService {
     CustomerRepository customerRepository;
     Customer customer;
@@ -22,9 +24,15 @@ public class CustomerServiceImpl implements CustomerService {
     }
     
     @Override
-    public void getCustomerByID(int ID){
+    public Customer getCustomerByID(int ID){
         System.out.println("=== GETTING CUSTOMER INFO ===");
-        customerRepository.getCustomerByIDFromRepository(ID);
+        return customerRepository.getCustomerByIDFromRepository(ID);
+    }
+    
+    @Override
+    public List<Customer> getAllCustomer(){
+        System.out.println("=== GETTING ALL CUSTOMER INFO===");
+        return customerRepository.getAllCustomerFromRepository();
     }
     
     @Override

@@ -4,6 +4,8 @@ import com.domain.model.Customer;
 import com.domain.service.CustomerService;
 import com.domain.service.CustomerServiceImpl;
 
+import java.util.List;
+
 public class App {
     
     public static void main(String[] args){
@@ -11,11 +13,32 @@ public class App {
         
         Customer customer = new Customer();
         
+        // createCustomer(customer);
+        // getCustomerById(1);
+        getAllCustomer();
+        
+        // customerService.updateCustomer();
+        
+        // customerService.deleteCustomerByID();
+    }
+    
+    public static void createCustomer(Customer customer){
         CustomerService customerService = new CustomerServiceImpl();
         customerService.createCustomer(customer);
-        
-        // customerService.getCustomerByID();
-        // customerService.updateCustomer();
-        // customerService.deleteCustomerByID();
+    }
+    
+    public static void getCustomerById(int ID){
+        CustomerService customerService = new CustomerServiceImpl();
+        Customer queryResults = customerService.getCustomerByID(ID);
+        if(queryResults == null){
+            System.out.println("Customer not found...");
+        } else {
+            System.out.println(queryResults);
+        }
+    }
+    public static void getAllCustomer(){
+        CustomerService customerService = new CustomerServiceImpl();
+        List<Customer> queryResults = customerService.getAllCustomer();
+        queryResults.forEach( customer -> System.out.println(customer.toString()) );
     }
 }
