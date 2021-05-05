@@ -41,10 +41,14 @@ public class ActorController {
         Colors.pc("Checking"+actor);
         List<Actor> actors = findActorsByFirstName(actor.getFirstName());
         boolean existingActor = false;
-        if(actors.size() != 0){
-            for(int i=0; i<actors.size();i++){
-                if(actor.getLastName().equals(actors.get(i).getLastName())){
-                    existingActor = true;
+        long actorId = 0;
+        if(actors != null) {
+            if (actors.size() != 0) {
+                for (int i = 0; i < actors.size(); i++) {
+                    if (actor.getLastName().equals(actors.get(i).getLastName())) {
+                        existingActor = true;
+                        actorId = actors.get(i).getActorId();
+                    }
                 }
             }
         }
@@ -57,7 +61,7 @@ public class ActorController {
             Colors.pc("Inserted " + actor);
         }else{
             Colors.pc("Actor already exists, Updating " + actor);
-            actorReturned = updateActor(actor.getActorId(),actor);
+            actorReturned = updateActor(actorId,actor);
             Colors.pc("Updated " + actor);
         }
         return actorReturned;
@@ -106,9 +110,18 @@ public class ActorController {
 
     @GetMapping("/actor/name/{first_name}")
     public List<Actor> findActorsByFirstName(@PathVariable(value="first_name")String firstName){
-        List<Actor> actors = actorRepository.findActorsByFirstName(firstName);
-        actors.forEach(Colors::pc);
-        return actors;
+        List<Actor> actors = null;
+
+        try {
+            Optional<List<Actor>> optionalActor = actorRepository.findActorsByFirstName(firstName);
+            actors = optionalActor.get();
+            actors.forEach(Colors::pc);
+            return actors;
+        }catch(NoSuchElementException exception){
+            System.out.println("Actor does not exist");
+            return null;
+        }
+
     }
 
 
