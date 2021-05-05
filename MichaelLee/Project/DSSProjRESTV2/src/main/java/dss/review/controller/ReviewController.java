@@ -23,14 +23,14 @@ import dss.review.utility.Colors;
 public class ReviewController {
 	@Autowired
 	ReviewRepository reviewRepository;
-	@GetMapping("/reviews")
+	@GetMapping("/")
 	public List<Review> findAllreviews() {
 		List<Review> reviewsList =  reviewRepository.findAll(); 
 		reviewsList.forEach(Colors::pc);
 		return reviewsList;
 	}
 	
-	@GetMapping("/reviews/{id}")
+	@GetMapping("/{id}")
 	public Review findReviewById(@PathVariable(value="id") Long reviewId) {
 		Optional<Review> optionalReview = reviewRepository.findById(reviewId);
 		Review review = optionalReview.get();
@@ -38,14 +38,14 @@ public class ReviewController {
 		return review;
 	}
 	
-	@PostMapping("/reviews")
+	@PostMapping("/")
 	public Review createReview(@RequestBody Review review) {
 	      Colors.pc("Inserting " + review);
 	      Review reviewReturned = reviewRepository.save(review);
 	      Colors.pc("Inserted " + review);
 		return reviewReturned;
 	}
-	@PutMapping("/reviews/{id}")
+	@PutMapping("/{id}")
 	public Review updateReview(@PathVariable(value="id") Long reviewId, @RequestBody Review review) {
 		Optional<Review> optionalReview = reviewRepository.findById(reviewId);
 		Review reviewFromDB = optionalReview.get();
@@ -58,7 +58,7 @@ public class ReviewController {
 		return reviewReturned;
 	}
 
-	   @DeleteMapping("/reviews/{id}")
+	   @DeleteMapping("/{id}")
 	   public boolean deleteReview(@PathVariable(value = "id") Long reviewId) {
 	      reviewRepository.deleteById(reviewId);
 	      Colors.pc("Deleted " + reviewId);
