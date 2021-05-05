@@ -7,7 +7,7 @@ public class Customer {
     private int customerAge;
     
     public Customer(){
-        this("firstName", "lastName", 00);
+        this("firstName", "lastName", 0);
     }
     
     public Customer(String customerFirstName, String customerLastName, int customerAge){
