@@ -12,13 +12,11 @@ public class App {
         System.out.println("=== CUSTOMER DATABASE PORTAL ===");
         
         Customer customer = new Customer();
-        
         // createCustomer(customer);
+        
         // getCustomerById(1);
         // getAllCustomer();
-        
-        updateCustomer(1, "amy", "john", 20);
-        
+        // updateCustomer(1, "amy", "john", 20);
         // deleteCustomerByID(2);
     }
     
@@ -36,16 +34,17 @@ public class App {
             System.out.println(queryResults);
         }
     }
+    
     public static void getAllCustomer(){
         CustomerService customerService = new CustomerServiceImpl();
         List<Customer> queryResults = customerService.getAllCustomer();
-        queryResults.forEach( customer -> System.out.println(customer.toString()) );
+        queryResults.forEach(customer -> System.out.println(customer.toString()));
     }
     
     public static void updateCustomer(int ID, String firstName, String lastName, int age){
         CustomerService customerService = new CustomerServiceImpl();
         Customer customer = new Customer(firstName, lastName, age);
-        customerService.updateCustomerByID( ID, customer );
+        customerService.updateCustomerByID(ID, customer);
     }
     
     public static void deleteCustomerByID(int ID){

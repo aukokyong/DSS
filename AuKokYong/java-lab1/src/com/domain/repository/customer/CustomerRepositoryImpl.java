@@ -92,20 +92,19 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     public void updateCustomerByIDFromRepository(int ID, Customer customer){
         System.out.println("UPDATING CUSTOMER INFO...");
         
-        String sql= "UPDATE customer SET firstName = ?, lastName = ?, age = ? where ID = ?";
+        String sql = "UPDATE customer SET firstName = ?, lastName = ?, age = ? where ID = ?";
         try{
             Connection connection = MySQLConnectionUtil.getConnection();
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1,customer.getCustomerFirstName());
-            statement.setString(2,customer.getCustomerLastName());
-            statement.setInt(3,customer.getCustomerAge());
+            statement.setString(1, customer.getCustomerFirstName());
+            statement.setString(2, customer.getCustomerLastName());
+            statement.setInt(3, customer.getCustomerAge());
             statement.setInt(4, ID);
-    
+            
             System.out.println(statement.executeUpdate() + " customer updated");
             connection.close();
             System.out.println("CLOSED DATABASE");
-        }
-        catch(SQLException err){
+        } catch(SQLException err){
             System.out.println(err.getMessage());
         }
     }

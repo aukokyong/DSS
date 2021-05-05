@@ -7,10 +7,10 @@ public class Customer {
     private int customerAge;
     
     public Customer(){
-        this( "firstName", "lastName", 00);
+        this("firstName", "lastName", 00);
     }
     
-    public Customer( String customerFirstName, String customerLastName, int customerAge){
+    public Customer(String customerFirstName, String customerLastName, int customerAge){
         this.customerFirstName = customerFirstName;
         this.customerLastName = customerLastName;
         this.customerAge = customerAge;
