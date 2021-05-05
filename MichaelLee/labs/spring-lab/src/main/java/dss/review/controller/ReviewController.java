@@ -19,7 +19,7 @@ import dss.review.utility.Colors;
 
 @RestController
 //http://localhost:8080/dss/api
-@RequestMapping("/api")
+@RequestMapping("/api/reviews")
 public class ReviewController {
 	@Autowired
 	ReviewRepository reviewRepository;
