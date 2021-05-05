@@ -15,7 +15,7 @@ public class MySQLConnectionUtil {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/DSSDB","root","");
-            System.out.println("Connected to db");
+            System.out.println("CONNECTED TO DATABASE");
             return connection;
         } catch(ClassNotFoundException | SQLException exception){
             System.out.println(exception);

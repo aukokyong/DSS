@@ -17,7 +17,7 @@ public class App {
         // getCustomerById(1);
         // getAllCustomer();
         
-        updateCustomer(1, customer);
+        updateCustomer(1, "amy", "john", 20);
         
         // deleteCustomerByID(2);
     }
@@ -42,8 +42,9 @@ public class App {
         queryResults.forEach( customer -> System.out.println(customer.toString()) );
     }
     
-    public static void updateCustomer(int ID, Customer customer){
+    public static void updateCustomer(int ID, String firstName, String lastName, int age){
         CustomerService customerService = new CustomerServiceImpl();
+        Customer customer = new Customer(firstName, lastName, age);
         customerService.updateCustomerByID( ID, customer );
     }
     

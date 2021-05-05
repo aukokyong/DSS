@@ -26,6 +26,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
             statement.setInt(3, customer.getCustomerAge());
             System.out.println(statement.executeUpdate() + " new customer data added");
             connection.close();
+            System.out.println("CLOSED DATABASE");
         } catch(SQLException err){
             System.out.println(err.getMessage());
         }
@@ -52,6 +53,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
                 customer = new Customer(resultID, resultFirstName, resultLastName, resultAge);
             }
             connection.close();
+            System.out.println("CLOSED DATABASE");
             return customer;
         } catch(SQLException err){
             System.out.println(err.getMessage());
@@ -78,6 +80,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
                 customer.add(new Customer(resultID, resultFirstName, resultLastName, resultAge));
             }
             connection.close();
+            System.out.println("CLOSED DATABASE");
             return customer;
         } catch(SQLException err){
             System.out.println(err.getMessage());
@@ -89,13 +92,28 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     public void updateCustomerByIDFromRepository(int ID, Customer customer){
         System.out.println("UPDATING CUSTOMER INFO...");
         
+        String sql= "UPDATE customer SET firstName = ?, lastName = ?, age = ? where ID = ?";
+        try{
+            Connection connection = MySQLConnectionUtil.getConnection();
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1,customer.getCustomerFirstName());
+            statement.setString(2,customer.getCustomerLastName());
+            statement.setInt(3,customer.getCustomerAge());
+            statement.setInt(4, ID);
+    
+            System.out.println(statement.executeUpdate() + " customer updated");
+            connection.close();
+            System.out.println("CLOSED DATABASE");
+        }
+        catch(SQLException err){
+            System.out.println(err.getMessage());
+        }
     }
     
     @Override
     public void deleteCustomerByIDFromRepository(int ID){
         System.out.println("DELETING CUSTOMER ID FROM DATABASE...");
         
-        int noOfRowsDeleted = 0;
         String sql = "DELETE FROM customer WHERE ID = ?";
         try{
             Connection connection = MySQLConnectionUtil.getConnection();
@@ -103,6 +121,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
             statement.setInt(1, ID);
             System.out.println(statement.executeUpdate() + " customer data deleted");
             connection.close();
+            System.out.println("CLOSED DATABASE");
         } catch(SQLException err){
             System.out.println(err.getMessage());
         }
