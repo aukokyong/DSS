@@ -1,0 +1,7 @@
+com/dss/model/Actor.class
+com/dss/repository/util/MySQLConnectionUtil.class
+com/dss/repository/actors/ActorsRepository.class
+com/dss/repository/actors/ActorsRepositoryImpl.class
+com/dss/ui/CRUDApp.class
+com/dss/service/ActorsServiceImpl.class
+com/dss/service/ActorsService.class
