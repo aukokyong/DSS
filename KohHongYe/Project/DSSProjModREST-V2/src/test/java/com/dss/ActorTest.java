@@ -19,22 +19,23 @@ public class ActorTest {
 	public ActorTest(){
 		actorCtrl = new ActorController();
 	}
-	
+
 	@Test
 	public void testSuccessfulActorInsert() {
 		Actor actor = new Actor(7,"Hong","Koh",'M',30);
 		//Inserting new user
-		assertEquals(1, actorCtrl.createActor(actor));
-		actorCtrl.deleteActor();
+		Actor returnedActor = actorCtrl.createActor(actor);
+		assertNotNull(returnedActor);
+		actorCtrl.deleteActor(returnedActor.getActorId());
 	}
-	
+
 	@Test
 	public void testFailedActorInsert() {
 		Actor actor = new Actor(1,"Hong Best","Koh",'M',99);
 		//Inserting a user with existing actorId (Key constraint)
-		assertEquals(0, actorRepo.insertActor(actor));
+		assertNull(actorCtrl.createActor(actor));
 	}
-	
+
 	@Test
 	public void testSuccessfulActorDelete() {
 		Actor actor = new Actor(7,"Hong","Koh",'M',30);
@@ -43,14 +44,14 @@ public class ActorTest {
 		//Deleting an existing user
 		assertEquals(1, actorRepo.deleteActor(actor));
 	}
-	
+
 	@Test
 	public void testFailedActorDelete() {
 		//Deleting an non-existent user
 		Actor actor = new Actor(999,"Hong Best","Koh",'M',99);
 		assertEquals(0, actorRepo.deleteActor(actor));
 	}
-	
+
 	@Test
 	public void testSuccessfulActorUpdate() {
 		Actor actor = new Actor(7,"Hong","Koh",'M',30);
@@ -61,19 +62,19 @@ public class ActorTest {
 		assertEquals(1, actorRepo.editActor(actor));
 		actorRepo.deleteActor(actor);
 	}
-	
+
 	@Test
 	public void testFailedActorUpdate() {
 		//Updating a non-existent user
 		Actor actor = new Actor(99,"Hong Best","Koh",'M',99);
 		assertEquals(0, actorRepo.editActor(actor));
 	}
-	
+
 	@Test
 	public void testRetrieveAllActors() {
 		assertEquals(6, actorRepo.getActors().size());
 	}
-	
+
 	@Test
 	public void testAddNewFilmSuccessful() {
 		String firstName ="Hong";
@@ -93,7 +94,7 @@ public class ActorTest {
 		assertEquals(1,actorRepo.insertActor(actor));
 		actorRepo.deleteActor(actor);
 	}
-	
+
 	@Test
 	public void testRemoveActor() {
 		Actor actor = new Actor(7,"Hong","Koh",'M',30);
@@ -109,9 +110,9 @@ public class ActorTest {
 
 		//Attempts the delete
 		assertEquals(1,actorRepo.deleteActor(actor));
-		
+
 	}
-	
-	
-	
+
+
+
 }

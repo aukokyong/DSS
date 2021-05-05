@@ -41,10 +41,12 @@ public class ActorController {
         Colors.pc("Checking"+actor);
         List<Actor> actors = findActorsByFirstName(actor.getFirstName());
         boolean existingActor = false;
+        long actorId = 0;
         if(actors.size() != 0){
             for(int i=0; i<actors.size();i++){
                 if(actor.getLastName().equals(actors.get(i).getLastName())){
                     existingActor = true;
+                    actorId = actors.get(i).getActorId();
                 }
             }
         }
@@ -57,7 +59,7 @@ public class ActorController {
             Colors.pc("Inserted " + actor);
         }else{
             Colors.pc("Actor already exists, Updating " + actor);
-            actorReturned = updateActor(actor.getActorId(),actor);
+            actorReturned = updateActor(actorId,actor);
             Colors.pc("Updated " + actor);
         }
         return actorReturned;
