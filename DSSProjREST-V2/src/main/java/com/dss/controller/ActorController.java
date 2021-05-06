@@ -1,6 +1,9 @@
 package com.dss.controller;
 import com.dss.model.Actor;
+import com.dss.model.Movie;
+import com.dss.model.MovieDetails;
 import com.dss.repository.ActorRepository;
+import com.dss.repository.MovieRepository;
 import com.dss.util.Colors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +17,8 @@ import java.util.Optional;
 public class ActorController {
     @Autowired
     ActorRepository actorRepository;
+    @Autowired
+    MovieRepository movieRepository;
 
     @GetMapping("/actors")
     public List<Actor> getAllActors(){
@@ -62,7 +67,6 @@ public class ActorController {
         }else{
             Colors.pc("Actor already exists, Updating " + actor);
             actorReturned = updateActor(actorId,actor);
-            Colors.pc("Updated " + actor);
         }
         return actorReturned;
     }
@@ -124,6 +128,15 @@ public class ActorController {
 
     }
 
+    @PostMapping("/moviedetails")
+    public boolean addNewMovie(@RequestBody MovieDetails movieDetails){
+        Colors.pc("Inserting: "+movieDetails.getMovie());
+        Movie movie = movieRepository.save(movieDetails.getMovie());
+        Colors.pc("Inserted "+movie);
+        List<Actor> actors = movieDetails.getActors();
+        actors.forEach(actor -> createActor(actor));
+        return true;
+    }
 
 
 }
