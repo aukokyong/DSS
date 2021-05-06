@@ -17,7 +17,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     public void createCustomerFromRepository(Customer customer){
         System.out.println(" ADDING NEW CUSTOMER TO DATABASE...");
         
-        String sql = "INSERT INTO customer (firstName, lastName, age) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO customers (firstName, lastName, age) VALUES (?, ?, ?)";
         try{
             Connection connection = MySQLConnectionUtil.getConnection();
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -37,7 +37,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         System.out.println("GETTING CUSTOMER INFO...");
         
         Customer customer = null;
-        String sql = "SELECT * FROM CUSTOMER WHERE ID = ?";
+        String sql = "SELECT * FROM CUSTOMERs WHERE ID = ?";
         try{
             Connection connection = MySQLConnectionUtil.getConnection();
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -67,7 +67,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         System.out.println("GETTING CUSTOMER INFO...");
         
         List<Customer> customer = new ArrayList<Customer>();
-        String sql = "SELECT * FROM CUSTOMER";
+        String sql = "SELECT * FROM CUSTOMERs";
         try{
             Connection connection = MySQLConnectionUtil.getConnection();
             Statement statement = connection.createStatement();
@@ -92,7 +92,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     public void updateCustomerByIDFromRepository(int ID, Customer customer){
         System.out.println("UPDATING CUSTOMER INFO...");
         
-        String sql = "UPDATE customer SET firstName = ?, lastName = ?, age = ? where ID = ?";
+        String sql = "UPDATE customers SET firstName = ?, lastName = ?, age = ? where ID = ?";
         try{
             Connection connection = MySQLConnectionUtil.getConnection();
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -113,7 +113,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     public void deleteCustomerByIDFromRepository(int ID){
         System.out.println("DELETING CUSTOMER ID FROM DATABASE...");
         
-        String sql = "DELETE FROM customer WHERE ID = ?";
+        String sql = "DELETE FROM customers WHERE ID = ?";
         try{
             Connection connection = MySQLConnectionUtil.getConnection();
             PreparedStatement statement = connection.prepareStatement(sql);
