@@ -26,7 +26,7 @@ public class MoviesApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 //		logger.error("INSERT MOVIES -> {}", movieJDBCRepository.insertMovie(new Movie(7L, 11, "Joker", 2019)));
-		logger.error("UPDATING MOVIE -> {}",movieJDBCRepository.updateMovie(new Movie(1L, 12 , "Conjuring 3", 2020)));
+		logger.error("UPDATING MOVIE -> {}",movieJDBCRepository.updateMovie(new Movie(1L, "Conjuring 3",12 , 2020)));
 		logger.error("All MOVIES -> {}", movieJDBCRepository.findAll());
 		logger.error("MOVIE BY ID -> {}", movieJDBCRepository.findById(2));
 //		logger.error("DELETE MOVIE -> {}", movieJDBCRepository.deleteMovieById(7));
