@@ -1,4 +1,5 @@
 import com.domain.model.Customer;
+import com.domain.repository.customer.CustomerRepositoryImpl;
 import com.domain.service.CustomerService;
 import com.domain.service.CustomerServiceImpl;
 import org.junit.jupiter.api.Test;
@@ -26,26 +27,28 @@ public class AppTest {
         assertEquals(0, customerDB.getCustomerAge());
     }
     
-    // @Test
-    // public void testInsertCustomer(){
-    //     CustomerService customerService = new CustomerServiceImpl();
-    //     Customer customer = new Customer(4,"04FIRST", "04LAST", 4);
-    //     customerService.createCustomer(customer);
-    //     Customer customerDB = customerService.getCustomerByID(4);
-    //     assertEquals("04FIRST", customerDB.getCustomerFirstName());
-    //     assertEquals("04LAST", customerDB.getCustomerLastName());
-    //     assertEquals(4, customerDB.getCustomerAge());
-    // }
+    @Test
+    public void testInsertCustomer(){
+        CustomerService customerService = new CustomerServiceImpl();
+        Customer customer = new Customer(4,"FIRST_insert", "LAST_insert", 0);
+        customerService.createCustomer(customer);
+    
+        CustomerRepositoryImpl customerRepository = new CustomerRepositoryImpl();
+        Customer customerDB = customerRepository.getCustomerByFirstNameFromRepository("FIRST_insert");
+        assertEquals("FIRST_insert", customerDB.getCustomerFirstName());
+        assertEquals("LAST_insert", customerDB.getCustomerLastName());
+        assertEquals(0, customerDB.getCustomerAge());
+    }
     
     @Test
     public void testUpdateCustomerByID(){
         CustomerService customerService = new CustomerServiceImpl();
-        Customer customer = new Customer("FIRST-updated", "LAST-updated", 1);
+        Customer customer = new Customer("FIRST_updated", "LAST_updated", 1);
         customerService.updateCustomerByID(2, customer);
         
         Customer customerDB = customerService.getCustomerByID(2);
-        assertEquals("FIRST-updated", customerDB.getCustomerFirstName());
-        assertEquals("LAST-updated", customerDB.getCustomerLastName());
+        assertEquals("FIRST_updated", customerDB.getCustomerFirstName());
+        assertEquals("LAST_updated", customerDB.getCustomerLastName());
         assertEquals(1, customerDB.getCustomerAge());
     }
     

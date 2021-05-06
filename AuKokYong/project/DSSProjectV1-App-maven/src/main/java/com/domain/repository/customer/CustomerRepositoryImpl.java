@@ -125,4 +125,34 @@ public class CustomerRepositoryImpl implements CustomerRepository {
             System.out.println(err.getMessage());
         }
     }
+    
+    
+    public Customer getCustomerByFirstNameFromRepository(String firstName){
+        System.out.println("GETTING CUSTOMER INFO...");
+        
+        Customer customer = null;
+        String sql = "SELECT * FROM CUSTOMER WHERE FIRSTNAME = ?";
+        try{
+            Connection connection = MySQLConnectionUtil.getConnection();
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, firstName);
+            
+            ResultSet results = statement.executeQuery();
+            if(results.next()){
+                int resultID = results.getInt(1);
+                String resultFirstName = results.getString(2);
+                String resultLastName = results.getString(3);
+                int resultAge = results.getInt(4);
+                
+                customer = new Customer(resultID, resultFirstName, resultLastName, resultAge);
+            }
+            connection.close();
+            System.out.println("CLOSED DATABASE");
+            return customer;
+        } catch(SQLException err){
+            System.out.println(err.getMessage());
+        }
+        
+        return customer;
+    }
 }
