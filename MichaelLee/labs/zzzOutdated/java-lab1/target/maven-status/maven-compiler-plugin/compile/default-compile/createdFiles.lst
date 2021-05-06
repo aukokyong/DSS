@@ -1,7 +1,0 @@
-main/java/dss/rating/service/RatingService.class
-main/java/dss/rating/repository/RatingRepository.class
-main/java/dss/rating/ui/CRUDApp.class
-main/java/dss/rating/repository/util/MySQLConnectionUtil.class
-main/java/dss/rating/repository/RatingRepositoryImpl.class
-main/java/dss/rating/service/RatingServiceImpl.class
-main/java/dss/rating/model/Rating.class
