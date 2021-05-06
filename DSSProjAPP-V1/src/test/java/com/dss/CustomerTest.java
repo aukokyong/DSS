@@ -2,7 +2,7 @@ package com.dss;
 import com.dss.model.Customer;
 import com.dss.service.CustomerService;
 import com.dss.service.CustomerServiceImpl;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.util.List;
 

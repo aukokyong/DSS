@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.ArrayList;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import com.dss.model.Movie;
 import com.dss.service.MovieService;
