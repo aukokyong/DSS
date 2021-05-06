@@ -14,7 +14,7 @@ public class Movie {
 		
 	}
 
-	public Movie(Long movieId,  int movieCost, String movieTitle, int movieYear) {
+	public Movie(Long movieId, String movieTitle,  int movieCost, int movieYear) {
 		super();
 		this.movieId = movieId;
 		this.movieCost = movieCost;

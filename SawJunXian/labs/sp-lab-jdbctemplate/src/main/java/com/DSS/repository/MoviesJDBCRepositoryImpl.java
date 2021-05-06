@@ -27,8 +27,8 @@ public class MoviesJDBCRepositoryImpl implements MoviesJDBCRepository {
 		public Movie mapRow(ResultSet resultSet, int rowNum) throws SQLException {
 			Movie movie = new Movie();
 			movie.setMovieId(resultSet.getLong(1));
-			movie.setMovieCost(resultSet.getInt(2));
-			movie.setMovieTitle(resultSet.getString(3));
+			movie.setMovieTitle(resultSet.getString(2));
+			movie.setMovieCost(resultSet.getInt(3));
 			movie.setMovieYear(resultSet.getInt(4));
 			return movie;
 		}
@@ -54,7 +54,7 @@ public class MoviesJDBCRepositoryImpl implements MoviesJDBCRepository {
 	@Override
 	public int insertMovie(Movie movie) {
 		return jdbcTemplate.update(
-				"insert into movies (movie_id, movie_cost, movie_title, movie_year) values(?, ?, ?, ?)",
+				"insert into movies (movie_id, movie_title, movie_cost, movie_year) values(?, ?, ?, ?)",
 				new Object[] {
 						movie.getMovieId(), movie.getMovieCost(), movie.getMovieTitle(),movie.getMovieYear()
 						});
@@ -63,8 +63,8 @@ public class MoviesJDBCRepositoryImpl implements MoviesJDBCRepository {
 
 	@Override
 	public int updateMovie(Movie movie) {
-		return jdbcTemplate.update("UPDATE MOVIES SET movie_cost = ? , movie_title = ? , movie_year = ? WHERE movie_id = ?",
-				new Object[] { movie.getMovieCost(), movie.getMovieTitle(),movie.getMovieYear(), movie.getMovieId()});
+		return jdbcTemplate.update("UPDATE MOVIES SET  movie_title = ? ,movie_cost = ? , movie_year = ? WHERE movie_id = ?",
+				new Object[] {  movie.getMovieTitle(),movie.getMovieCost(),movie.getMovieYear(), movie.getMovieId()});
 	}
 	
 	@Override
