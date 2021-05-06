@@ -83,7 +83,7 @@ public class MovieRepositoryImpl implements MovieRepository{
 		
 		try {
 			Connection connection = MySQLConnectionUtil.getConnection();
-			PreparedStatement stmt = connection.prepareStatement("UPDATE MOVIE SET MOVIE_TITLE = ? , MOVIE_RATE = ?, MOVIE_YEAR = ? WHERE MOVIE_ID = ?");
+			PreparedStatement stmt = connection.prepareStatement("UPDATE MOVIE SET MOVIE_TITLE = ? , MOVIE_COST = ?, MOVIE_YEAR = ? WHERE MOVIE_ID = ?");
 			stmt.setString(1, movie.getMovie_title());
 			stmt.setInt(2, movie.getMovie_cost());
 			stmt.setInt(3, movie.getMovie_year());
