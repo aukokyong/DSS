@@ -3,8 +3,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
 import com.dss.model.Actor;
 import com.dss.repository.ActorRepository;
@@ -15,14 +15,14 @@ import java.util.List;
 public class ActorTest {
 	static ActorRepository actorRepo = null;
 	
-	@BeforeAll
-	public static void setup() {
+	@Before
+	public void setup() {
 		actorRepo = new ActorRepositoryImpl();
 	}
 	
 	@Test
 	public void testSuccessfulActorInsert() {
-		Actor actor = new Actor(7,"Hong","Koh",'M',30);
+		Actor actor = new Actor(8,"Hong","Koh",'M',30);
 		//Inserting new user
 		assertEquals(1, actorRepo.insertActor(actor));
 		actorRepo.deleteActor(actor);
@@ -37,7 +37,7 @@ public class ActorTest {
 	
 	@Test
 	public void testSuccessfulActorDelete() {
-		Actor actor = new Actor(7,"Hong","Koh",'M',30);
+		Actor actor = new Actor(8,"Hong","Koh",'M',30);
 		actorRepo.insertActor(actor);
 
 		//Deleting an existing user
@@ -53,7 +53,7 @@ public class ActorTest {
 	
 	@Test
 	public void testSuccessfulActorUpdate() {
-		Actor actor = new Actor(7,"Hong","Koh",'M',30);
+		Actor actor = new Actor(8,"Hong","Koh",'M',30);
 		actorRepo.insertActor(actor);
 
 		//Updating an existing user
@@ -71,7 +71,7 @@ public class ActorTest {
 	
 	@Test
 	public void testRetrieveAllActors() {
-		assertEquals(6, actorRepo.getActors().size());
+		assertEquals(7, actorRepo.getActors().size());
 	}
 	
 	@Test
@@ -96,7 +96,7 @@ public class ActorTest {
 	
 	@Test
 	public void testRemoveActor() {
-		Actor actor = new Actor(7,"Hong","Koh",'M',30);
+		Actor actor = new Actor(8,"Hong","Koh",'M',30);
 		actorRepo.insertActor(actor);
 
 		//Search by First Name, Success if more than 1 is returned

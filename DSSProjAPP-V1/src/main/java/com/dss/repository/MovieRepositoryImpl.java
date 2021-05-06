@@ -18,7 +18,7 @@ public class MovieRepositoryImpl implements MovieRepository{
 		try {
 		Connection connection = MySQLConnectionUtil.getConnection();
 		Statement statement = connection.createStatement();
-		ResultSet resultSet = statement.executeQuery("SELECT * FROM MOVIE");
+		ResultSet resultSet = statement.executeQuery("SELECT * FROM MOVIES");
 			while (resultSet.next()) {
 				Movie movie = new Movie();
 				movie.setMovie_id(resultSet.getInt(1));
@@ -39,7 +39,7 @@ public class MovieRepositoryImpl implements MovieRepository{
 		Movie movie = new Movie();
 		try {
 		Connection connection = MySQLConnectionUtil.getConnection();
-		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM MOVIE WHERE MOVIE_ID = ?");
+		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM MOVIES WHERE MOVIE_ID = ?");
 		stmt.setInt(1, movieid);
 		ResultSet resultSet = stmt.executeQuery();
 	
@@ -61,7 +61,7 @@ public class MovieRepositoryImpl implements MovieRepository{
 		int noOfRowsInserted = 0;
 		try {
 			Connection connection = MySQLConnectionUtil.getConnection();
-			PreparedStatement stmt = connection.prepareStatement("INSERT INTO MOVIE VALUES(?,?,?,?)");
+			PreparedStatement stmt = connection.prepareStatement("INSERT INTO MOVIES VALUES(?,?,?,?)");
 			stmt.setInt(1, movie.getMovie_id());
 			stmt.setString(2, movie.getMovie_title());
 			stmt.setInt(3, movie.getMovie_cost());
@@ -83,7 +83,7 @@ public class MovieRepositoryImpl implements MovieRepository{
 		
 		try {
 			Connection connection = MySQLConnectionUtil.getConnection();
-			PreparedStatement stmt = connection.prepareStatement("UPDATE MOVIE SET MOVIE_TITLE = ? , MOVIE_COST = ?, MOVIE_YEAR = ? WHERE MOVIE_ID = ?");
+			PreparedStatement stmt = connection.prepareStatement("UPDATE MOVIES SET MOVIE_TITLE = ? , MOVIE_COST = ?, MOVIE_YEAR = ? WHERE MOVIE_ID = ?");
 			stmt.setString(1, movie.getMovie_title());
 			stmt.setInt(2, movie.getMovie_cost());
 			stmt.setInt(3, movie.getMovie_year());
@@ -101,7 +101,7 @@ public class MovieRepositoryImpl implements MovieRepository{
 		try
 		{
 			Connection connection = MySQLConnectionUtil.getConnection();
-			PreparedStatement stmt = connection.prepareStatement("DELETE FROM MOVIE WHERE MOVIE_ID = ?");
+			PreparedStatement stmt = connection.prepareStatement("DELETE FROM MOVIES WHERE MOVIE_ID = ?");
 			stmt.setInt(1, movieid);
 			noOfRowsDeleted = stmt.executeUpdate();
 		}catch(SQLException exception){
