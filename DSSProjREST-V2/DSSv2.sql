@@ -18,11 +18,11 @@ CREATE TABLE MOVIES(
  );
  
  CREATE TABLE CUSTOMERS (
-	ID int NOT NULL AUTO_INCREMENT,
+	customerID int NOT NULL AUTO_INCREMENT,
 	firstName varChar(255),
     lastName varChar(255),
     age int,
-    PRIMARY KEY (ID)
+    PRIMARY KEY (customerID)
 );
 
 CREATE TABLE REVIEWS (
