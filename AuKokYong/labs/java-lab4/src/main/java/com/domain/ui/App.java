@@ -14,10 +14,10 @@ public class App {
         Customer customer = new Customer();
         createCustomer(customer);
         
-        // getCustomerById(1);
-        // getAllCustomer();
-        // updateCustomer(1, "amy", "john", 20);
-        // deleteCustomerByID(2);
+         getCustomerById(1);
+         getAllCustomer();
+         updateCustomer(1, "amy", "john", 20);
+         deleteCustomerByID(2);
     }
     
     public static void createCustomer(Customer customer){
