@@ -16,7 +16,7 @@ public class App {
         Colors.pru("DSSProjAPP-V1 Application Started");
         while(!choice.equals("5")) {
 
-            Colors.pp("\nDSSProjAPP-V1 Menu");
+            Colors.pp("\nDSSProjAPP-V1 Junit Menu");
             Colors.pg("1. Actor");
             Colors.pg("2. Customer");
             Colors.pg("3. Movie");
